@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #0d121c;
+        font-family: "Josefin Sans", sans-serif !important;
+        color: white !important;
+      }
+      header {
+        position: fixed;
+        background-color: #131927;
+        height: 90px;
+        width: 100%;
+        z-index: 10;
+      }
+      .container {
+        top: 120px;
+        position: relative;
+        color: white;
+        text-align: center;
+      }
+      label,
+      input {
+        margin: 5px;
+      }
+      .movie-container {
+        width: 100%;
+        margin: 20px auto 20px auto;
+        text-align: left;
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 5%;
+      }
+      .card-container {
+        width: 20%;
+
+        border: 1px solid white;
+        padding: 2% 2% 0 2%;
+        border-radius: 3px;
+      }
+      .error {
+        border-style: none !important;
+      }
+      .card {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .title {
+        margin-left: 20px;
+        margin-bottom: 0px !important;
+      }
+
+      .italics {
+        margin-top: 0px !important;
+        font-family: "Caveat", cursive !important;
+      }
+      #search {
+        background-color: #0091e7;
+        color: white;
+        outline: none;
+        border-style: none;
+        width: 100px;
+        padding: 0.5%;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input {
+        padding: 0.5%;
+        border-radius: 5px;
+      }
+      .error-img {
+        width: 70%;
+      }
+
+      .badge {
+        position: absolute;
+        background-color: #1d9a6e;
+        color: white;
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2 class="title">Movie Search Engine</h2>
+      <h3 class="title italics">Make your own personalised watchlist</h3>
+    </header>
+    <div class="container">
+      <h3 style="margin-top: 0px">Explore MOVIES in just a SEARCH !!</h3>
+
+      <input type="text" id="movieName" placeholder="Enter Movie Name" />
+      <input type="submit" id="search" value="Search" />
+      <div class="movie-container"></div>
+    </div>
+
+    <script type="text/javascript" src="./movieSearch.js"></script>
+  </body>
+</html>
