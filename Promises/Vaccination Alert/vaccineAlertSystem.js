@@ -39,14 +39,18 @@ function registerUser(event) {
   indvUser.name = name;
   indvUser.age = age;
 
-  if (Number(age) > 60) {
-    mainQueue.unshift(indvUser);
-    alert(
-      "Thank you for Registering. You can stand in the front of the queue ."
-    );
+  if (name && age) {
+    if (Number(age) > 60) {
+      mainQueue.unshift(indvUser);
+      alert(
+        "Thank you for Registering. You can stand in the front of the queue ."
+      );
+    } else {
+      mainQueue.push(indvUser);
+      alert("Thank you for Registering. " + msg);
+    }
   } else {
-    mainQueue.push(indvUser);
-    alert("Thank you for Registering. " + msg);
+    alert("Please enter the required details for registration .");
   }
 
   displayUser();

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McDonald Ticketing System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Josefin Sans", sans-serif !important;
+        overflow: hidden;
+      }
+      header {
+        height: 120px;
+        box-shadow: 0 0.0625rem 0.5rem 0 rgb(0 0 0 / 4%),
+          0 0.0625rem 0.3125rem 0 rgb(0 0 0 / 4%);
+        width: 100%;
+        z-index: 2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        color: red;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        margin: auto;
+      }
+
+      .menu-container {
+        width: 50%;
+        margin: auto auto 50px auto;
+      }
+      .menu-items {
+        padding-left: 5%;
+        padding-bottom: 5%;
+      }
+
+      #order {
+        outline: none;
+        border-style: none;
+        border-radius: 3px;
+        background-color: #ffbc0d;
+        color: white;
+        padding: 5px;
+        height: 40px;
+        width: 100px;
+        cursor: pointer;
+      }
+
+      .display-order {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: white;
+        background-color: #ffbc0d;
+        padding-top: 2%;
+        padding-bottom: 2%;
+      }
+
+      .order-details {
+        width: 60%;
+        background-color: white;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        color: black;
+      }
+
+      .card-container {
+        width: 40%;
+        margin: 20px;
+        box-shadow: 0 0.0625rem 0.5rem 0 rgb(0 0 0 / 4%),
+          0 0.0625rem 0.3125rem 0 rgb(0 0 0 / 4%);
+      }
+      .card {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://www.mcdonalds.com/content/dam/usa/nfl/assets/nav/arches-logo_108x108.jpg"
+      />
+      <h1>Welcome to McDonald</h1>
+    </header>
+    <div class="container">
+      <div class="menu-container">
+        <form>
+          <fieldset>
+            <legend><h2>Order Your Favourites</h2></legend>
+            <div class="menu-items">
+              <h3>Burgers</h3>
+              <input type="checkbox" name="item" value="Big Mac" />Big Mac<br />
+              <input
+                type="checkbox"
+                name="item"
+                value="Quarter Pounder with Cheese"
+              />Quarter Pounder with Cheese<br />
+              <input
+                type="checkbox"
+                name="item"
+                value="McDouble"
+              />McDouble<br />
+              <h3>Desserts</h3>
+              <input
+                type="checkbox"
+                name="item"
+                value="McFlurry Oreo"
+              />McFlurry Oreo<br />
+              <input
+                type="checkbox"
+                name="item"
+                value="Strawberry Shake"
+              />Strawberry Shake<br />
+              <input
+                type="checkbox"
+                name="item"
+                value="Hot Caramel Sundae"
+              />Hot Caramel Sundae<br />
+              <br />
+              <input id="order" type="submit" value="Order Now" />
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="display-order">
+        <h2><strong id="order-id"></strong></h2>
+        <div class="order-details"></div>
+        <h2 text-align="center">I’m Lovin’ it</h2>
+        <h2 text-align="center">I’m Lovin’ it</h2>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./mcd.js"></script>
+  </body>
+</html>
