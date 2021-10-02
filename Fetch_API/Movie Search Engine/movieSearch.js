@@ -71,9 +71,16 @@ function displayError() {
   img.src = "./confused.png";
   img.className = "error-img";
   const h4 = document.createElement("h4");
-  h4.textContent = "That seems to be a UNKNOWN MOVIE !!";
+  h4.textContent = "That seems to be a UNKNOWN MOVIE !! Try Again";
 
   div2.append(img);
   div.append(div2, h4);
   cont.append(div);
+
+  setTimeout(function () {
+    var obj = document.getElementsByClassName("error");
+    for (const i of obj) {
+      i.style.display = "none";
+    }
+  }, 2000);
 }

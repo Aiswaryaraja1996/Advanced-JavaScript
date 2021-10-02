@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #eaeaea;
+        font-family: "Open Sans", sans-serif;
+      }
+      h4 {
+        font-size: 1rem;
+        font-family: "Open Sans", sans-serif;
+      }
+      p {
+        font-family: "Open Sans", sans-serif;
+        color: #616465;
+        font-size: 0.875rem;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        padding: 5px;
+        font-weight: bold;
+      }
+      nav {
+        margin-right: 10px;
+      }
+      .header {
+        width: 100%;
+        height: 80px;
+      }
+      .container-main {
+        top: 100px;
+        position: absolute;
+      }
+      .headline-section {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background-color: white;
+        padding: 20px;
+      }
+      .main-card {
+        width: 15%;
+        margin: 10px;
+        min-height: 295px;
+        padding: 10px;
+      }
+      .main-card:hover {
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+      .news-card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .img-content {
+        height: 150px;
+      }
+
+      .img-content img {
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .content {
+        text-align: justify;
+      }
+      header {
+        background-color: #747272;
+        height: 80px;
+        width: 100%;
+        border-bottom: 1px solid rgb(185, 181, 181);
+        position: fixed;
+        z-index: 10;
+        margin: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .head {
+        background-color: white;
+        text-align: center;
+        width: 90%;
+        margin: auto auto 10px auto;
+        padding: 20px;
+      }
+      h1 {
+        letter-spacing: 18px;
+      }
+      .title {
+        color: white;
+        margin-left: 10px;
+        letter-spacing: 5px;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .search-container {
+        margin-left: 8px;
+      }
+      input,
+      button {
+        border-radius: 3px;
+        outline: none;
+        border-style: none;
+        padding: 5px;
+      }
+      button {
+        cursor: pointer;
+      }
+      #pagination {
+        width: 90%;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h2 class="title">
+          <a href="./newsApp.html" target="_blank">NEWS 24X7</a>
+        </h2>
+      </div>
+      <nav>
+        <a href="./sports.html" target="_blank">SPORTS</a>
+        <a href="./entertainment.html" target="_blank">ENTERTAINMENT</a>
+        <a href="./technology.html" target="_blank">TECHNOLOGY</a>
+        <div class="search-container">
+          <input
+            id="search-txt"
+            type="text"
+            placeholder="Search"
+            name="search"
+          />
+          <button id="btn-search" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container-main">
+      <div class="head">
+        <h1 id="head-title">ENTERTAINMENT NEWS</h1>
+      </div>
+      <div id="pagination"></div>
+      <div class="headline-section"></div>
+    </div>
+    <script type="text/javascript" src="./entertainment.js"></script>
+  </body>
+</html>
