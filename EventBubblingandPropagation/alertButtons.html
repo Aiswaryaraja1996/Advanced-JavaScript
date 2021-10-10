@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #1a4314;
+      }
+
+      .container {
+        width: 30%;
+        margin: auto;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #btn,
+      .btn-child {
+        background-color: #a3ebb1;
+        padding: 10px;
+        cursor: pointer;
+        margin: 10px;
+        outline: none;
+        border-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("load", function () {
+        const cont = document.createElement("div");
+        cont.className = "container";
+        const button = document.createElement("button");
+        button.id = "btn";
+        button.textContent = "SHOW BUTTON";
+
+        document.body.appendChild(cont);
+        document.getElementsByClassName("container")[0].appendChild(button);
+
+        document
+          .getElementsByClassName("container")[0]
+          .addEventListener("click", function () {
+            if (event.target.textContent == "SHOW BUTTON") {
+              for (var i = 0; i < 5; i++) {
+                var btn = document.createElement("button");
+                btn.textContent = i + 1;
+                btn.className = "btn-child";
+                document
+                  .getElementsByClassName("container")[0]
+                  .appendChild(btn);
+              }
+            }
+            if (event.target.className == "btn-child") {
+              alert(event.target.textContent);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
