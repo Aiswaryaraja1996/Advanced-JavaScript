@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #75e6da;
+      }
+      #container {
+        width: 20%;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+      }
+      input {
+        padding: 5px;
+        border-radius: 3px;
+      }
+      input[type="submit"] {
+        background-color: #189ab4;
+        outline: none !important;
+        border-style: none;
+        cursor: pointer;
+      }
+      .card {
+        margin-top: 10px !important;
+        border: 1px solid black !important;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" />
+      <label for="contact">Contact</label>
+      <input id="phone" type="text" name="contact" />
+      <br />
+      <input id="create-btn" type="submit" value="CREATE" />
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        document
+          .getElementById("create-btn")
+          .addEventListener("click", function () {
+            const frag = document.createElement("div");
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            if (name && phone) {
+              var card = document.createElement("div");
+              card.className = "card";
+              var h2 = document.createElement("h2");
+              h2.textContent = name;
+              var btn = document.createElement("button");
+              btn.id = "phone-btn";
+              btn.textContent = "Show Phone Number";
+              var h3 = document.createElement("h3");
+              h3.id = "phone-num";
+              h3.textContent = phone;
+              h3.style.display = "none";
+              card.append(h2, h3, btn);
+              frag.append(card);
+            }
+            document.getElementById("name").value = "";
+            document.getElementById("phone").value = "";
+
+            document.getElementById("container").append(frag);
+
+            var cards = document.getElementsByClassName("card");
+
+            for (const c of cards) {
+              c.addEventListener("click", function (e) {
+                console.log(e);
+                if (e.target.parentNode.childNodes[1].style.display == "none") {
+                  e.target.parentNode.childNodes[2].textContent =
+                    "Hide Phone Number";
+                  e.target.parentNode.childNodes[1].style.display = "block";
+                } else {
+                  e.target.parentNode.childNodes[2].textContent =
+                    "Show Phone Number";
+                  e.target.parentNode.childNodes[1].style.display = "none";
+                }
+              });
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
