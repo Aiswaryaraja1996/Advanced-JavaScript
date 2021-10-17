@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Infinite Scroll - Quotes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #478c5c;
+
+        font-family: "Comfortaa", cursive !important;
+      }
+      p {
+        margin: 0px;
+        padding: 0px;
+      }
+      header {
+        width: 100%;
+        padding: 18px;
+        /* font-size: 40px; */
+        color: white;
+        position: fixed;
+        height: 80px;
+        background-color: #013a20;
+        display: flex;
+        justify-content: space-between;
+        z-index: 10;
+      }
+
+      header h1 {
+        letter-spacing: 5px;
+        font-weight: bolder;
+        font-size: 40px;
+      }
+
+      .quoteCard {
+        background-color: #b1d8b7;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .container {
+        top: 100px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>QUOTES</h1>
+      <div class="count">
+        <span
+          >Scroll Count
+          <p id="scount">0</p></span
+        >
+        <span
+          >Function Call Count
+          <p id="fcount">0</p></span
+        >
+      </div>
+    </header>
+    <div class="container">
+      <div class="quotes"></div>
+    </div>
+    <script src="./scroll.js"></script>
+  </body>
+</html>
