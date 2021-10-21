@@ -1,0 +1,18 @@
+{
+  "name": "imageapi",
+  "version": "0.0.1",
+  "description": "This is web page created using image API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "unsplash-js": "^7.0.15"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.1"
+  }
+}
