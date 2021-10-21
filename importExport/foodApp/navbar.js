@@ -4,6 +4,7 @@ const Navbar = ()=>{
 
     <div class="other-pages">
       <a href="./receipe.html" target="_blank">RECEIPE OF THE DAY</a>
+      <div class="line"></div>
       <a href="./latest.html" target="_blank">LATEST RECEIPES</a>
     </div>
   </navbar>`
