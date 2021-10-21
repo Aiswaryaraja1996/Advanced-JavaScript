@@ -1,0 +1,118 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Slabo 27px", serif;
+  letter-spacing: 2px;
+  overflow-x: hidden;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  background-color: black;
+  color: white !important;
+}
+
+navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin: 5px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  width: 70%;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+  border-radius: 18px 0 0 18px;
+  background-color: #eee;
+}
+button {
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #eee;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px 18px 18px 0;
+}
+.searchBar {
+  position: absolute;
+  left:400px;
+  top:280px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.other-pages {
+  margin-right: 10px;
+  display: flex;
+}
+
+.title {
+  margin-left: 10px;
+}
+.foodBackground {
+  position: relative;
+  color: #fff;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("./foodbackground.jpg");
+}
+
+
+#container {
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.card {
+  max-width: 40%;
+  border: 1px solid black;
+
+  padding: 10px;
+  text-align: justify;
+}
+figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+figure > img {
+  width: 60%;
+}
+#caption {
+  font-family: 'Festive', cursive;
+  position: absolute;
+  top:280px;
+  left: 200px; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width:100%;
+  letter-spacing: 15px;
+  font-size: 80px;
+}
