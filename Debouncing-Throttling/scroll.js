@@ -19,7 +19,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-function getQuotes(page, limit, total) {
+function getQuotes(page, limit) {
   return fetch(`https://quotable.io/quotes?page=${page}&limit=${limit}`).then(
     function (response) {
       return response.json();
@@ -47,7 +47,7 @@ function createCard(d) {
 async function fetchQuotes(page, limit, total) {
   setTimeout(async () => {
     try {
-      const result = await getQuotes(page, limit, total);
+      const result = await getQuotes(page, limit);
       displayQuotes(result.results);
     } catch (error) {
       console.log(error.message);

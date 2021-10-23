@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debouncer and Throttler</title>
+    <style type="text/css">
+      body {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+      h1 {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      div{
+          width:40%;
+          margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Debouncer and Throttler</h1>
+
+      <h2>Debouncer</h2>
+      <input type="text" id="textD" name="text" />
+      <h3 id="typeD"></h3>
+      <br />
+      <h2>Throttler</h2>
+      <input type="text" id="textT" name="text" />
+      <h3 id="typeT"></h3>
+    </div>
+
+    <script type="text/javascript">
+      function updateFunc() {
+        document.getElementById("typeD").textContent =
+          document.getElementById("textD").value;
+      }
+
+      function updateFunc2() {
+        document.getElementById("typeT").textContent =
+          document.getElementById("textT").value;
+      }
+
+      function debouncer(fn, delay) {
+        let id;
+        return function () {
+          id && clearTimeout(id);
+          id = setTimeout(function () {
+            fn();
+          }, delay);
+        };
+      }
+
+      function throttler(fn, delay) {
+        let lastCall = 0;
+        return function () {
+          const now = Date.now();
+          const diff = now - lastCall;
+          if (diff >= delay) {
+            fn();
+            latestCall = now;
+          } else {
+            console.log(`You need to try again after ${delay - diff}ms`);
+          }
+        };
+      }
+
+      const debounce = debouncer(updateFunc, 1000);
+      const throttle = throttler(updateFunc2, 2000);
+
+      window.addEventListener("load", () => {
+        document.getElementById("textD").addEventListener("keyup", () => {
+          debounce();
+        });
+
+        document.getElementById("textT").addEventListener("keyup", () => {
+          throttle();
+        });
+      });
+
+
+    </script>
+  </body>
+</html>
