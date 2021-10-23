@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="./navbar.css" type="text/css" />
+    <link rel="stylesheet" href="./cart.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#">Home</a>
+        <ul class="flex-center">
+          <div>
+            <a href="./form.html" target="_blank">Add Products</a>
+            <a href="#" target="_blank">View Cart</a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="content-wrap">
+      <div class="cart-wrap">
+        <h1>CHECK YOUR SHOPPING BAG !!</h1>
+        <h3>
+          Hurray !! You have <strong id="total"></strong> items in your bag.
+        </h3>
+        <button id="priceDetails">View Price Details</button>
+        <div class="cart-List"></div>
+      </div>
+
+      <div class="price-modal">
+        <div class="price-wrap"></div>
+      </div>
+    </div>
+    <script>
+      var cartList = JSON.parse(localStorage.getItem("cartData"));
+      var priceDetail = [];
+      var totalPrice = 0;
+
+      function ProdDetail(prod, price) {
+        this.prod = prod;
+        this.price = price;
+      }
+
+      function displayProducts() {
+        document.getElementById("total").textContent = cartList.length;
+        for (var j = 0; j < cartList.length; j++) {
+          var imgDiv = document.createElement("div");
+          imgDiv.setAttribute("class", "prodCard");
+
+          var card = document.createElement("div");
+          card.setAttribute("class", "card");
+          card.setAttribute("id", j);
+
+          var imgSrc = document.createElement("img");
+          imgSrc.setAttribute("src", cartList[j].url);
+          imgSrc.setAttribute("class", "prodImg");
+
+          var prodDesc = document.createElement("div");
+          prodDesc.setAttribute("class", "prodDesc");
+
+          var h2 = document.createElement("h3");
+          h2.textContent = cartList[j].name;
+
+          var h3 = document.createElement("h4");
+          h3.textContent = `Rs.${cartList[j].price}`;
+
+          prodDesc.appendChild(h2);
+          prodDesc.appendChild(h3);
+
+          card.appendChild(imgSrc);
+          card.appendChild(prodDesc);
+
+          imgDiv.appendChild(card);
+
+          var newProd = new ProdDetail(
+            cartList[j].name,
+            Number(`${cartList[j].price}`)
+          );
+          priceDetail.push(newProd);
+
+          document.getElementsByClassName("cart-List")[0].appendChild(imgDiv);
+        }
+      }
+
+      const cont = document.getElementsByClassName("price-wrap")[0];
+      function calculateTotal() {
+        event.preventDefault();
+        cont.innerHTML = null;
+        document.getElementsByClassName("price-modal")[0].style.display =
+          "block";
+        var span = document.createElement("span");
+        span.className = "close";
+        span.textContent = "X";
+
+        cont.appendChild(span);
+
+        var sum = 0;
+        for (var k = 0; k < priceDetail.length; k++) {
+          const div = document.createElement("div");
+          div.className = "prod-details";
+
+          const p = document.createElement("p");
+          p.textContent = `${priceDetail[k].prod}`;
+
+          const p2 = document.createElement("p");
+          p2.textContent = `Rs.${priceDetail[k].price}`;
+
+          sum = sum + priceDetail[k].price;
+
+          div.append(p, p2);
+          cont.appendChild(div);
+        }
+        const div2 = document.createElement("div");
+        div2.className = "line";
+
+        cont.appendChild(div2);
+
+        const div3 = document.createElement("div");
+        div3.className = "prod-details";
+
+        const p3 = document.createElement("p");
+        p3.textContent = "TOTAL";
+
+        const p4 = document.createElement("p");
+        p4.textContent = `Rs.${sum}`;
+        p4.className = "total-price";
+
+        const div4 = document.createElement("div");
+        div4.className = "promoWrap";
+
+        const btnPromo = document.createElement("button");
+        btnPromo.textContent = "Apply Promo";
+        btnPromo.id = "applyPromo";
+
+        const inputPromo = document.createElement("input");
+        inputPromo.type = "text";
+        inputPromo.id = "valuePromo";
+        inputPromo.placeholder = "Enter promo code";
+
+        const btnFinal = document.createElement("button");
+        btnFinal.textContent = "Proceed to Checkout";
+        btnFinal.style.backgroundColor = "#486590";
+        btnFinal.id = "btnFinal";
+
+        div3.append(p3, p4);
+        div4.append(inputPromo, btnPromo);
+
+        cont.append(div3, div4, btnFinal);
+
+        document.getElementById("applyPromo").addEventListener("click", () => {
+          calculatePromo(sum);
+        });
+
+        document
+          .getElementById("btnFinal")
+          .addEventListener("click", successMsg);
+
+        document
+          .getElementsByClassName("close")[0]
+          .addEventListener("click", () => {
+            document.getElementsByClassName("price-modal")[0].style.display =
+              "none";
+          });
+      }
+      function successMsg() {
+        location.href = "./success.html";
+      }
+      function calculatePromo(sum) {
+        if (document.getElementById("valuePromo").value) {
+          if (document.getElementById("valuePromo").value === "masai30") {
+            alert("Hurray !! You got 30% Discount on your purchase.");
+
+            document.getElementsByClassName(
+              "total-price"
+            )[0].textContent = `Rs.${Number(sum - (sum * 30) / 100)}`;
+          } else {
+            alert("Please enter a valid promo code.");
+          }
+        } else {
+          alert("Enter the promo code to proceed.");
+        }
+      }
+      window.addEventListener("load", () => {
+        displayProducts();
+        document
+          .getElementById("priceDetails")
+          .addEventListener("click", calculateTotal);
+      });
+    </script>
+  </body>
+</html>

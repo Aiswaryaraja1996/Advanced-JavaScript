@@ -1,0 +1,53 @@
+body {
+  margin: 0px;
+  font-family: "Lato", sans-serif !important;
+  overflow-x: hidden;
+  background-color: #bcece0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  margin: 0px;
+}
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: black;
+  border-bottom: 1px solid #333;
+  position: fixed;
+  z-index: 2;
+}
+
+nav {
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav > ul a {
+  padding: 10px;
+}
+
+a {
+  /* padding: 12px;
+  margin: 12px; */
+  font-size: 20px;
+  color: white;
+}
+
+#login,
+#signup {
+  background-color: red;
+  padding: 10px;
+  margin-left: 20px;
+}

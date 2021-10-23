@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You Tube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      h2 {
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden;
+      }
+      h2 {
+        font-family: "Oswald", sans-serif;
+      }
+      .title-icon {
+        height: 20px;
+        width: 150px;
+        max-width: 100%;
+      }
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .title-icon img {
+        max-width: 36%;
+        height: auto;
+        margin-right: 5px;
+      }
+      .title-container {
+        display: flex;
+        height: 56px;
+
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 14px 18px 16px;
+      }
+      #search-text {
+        border-radius: 2px 0 0 2px;
+        outline: none;
+        border-style: none;
+        height: 40px;
+        width: 380px;
+        border: 1px solid #ccc;
+      }
+      .search-bar {
+        margin: 0 0 0 40px;
+        padding: 0 4px;
+      }
+      #search-btn {
+        border: 1px solid #ccc;
+        height: 40px;
+        width: 64px;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        background-color: #f8f8f8;
+        padding: 1px;
+        border-left: none;
+      }
+
+      button {
+        outline: none;
+        border-style: none;
+        background-color: transparent;
+      }
+      .profile {
+        height: 40px;
+        width: 60px;
+      }
+      .profile img {
+        max-width: 70%;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="title-container">
+        <div class="title-icon flex-center">
+          <img src="./youtube.png" />
+          <h2>YouTube</h2>
+        </div>
+        <div class="search-bar flex-center">
+          <input id="search-text" type="text" placeholder="Search" />
+          <div id="search-btn" class="flex-center">
+            <button>
+              <img src="./loupe.png" />
+            </button>
+          </div>
+        </div>
+        <div class="profile flex-center">
+          <img src="./avatar.jpg" />
+        </div>
+      </div>
+    </header>
+    <!-- <label for="search">Search</label>
+    <input type="text" name="search" id="search" />
+    <input type="submit" value="Search" id="search-btn" />
+    <div id="resCont"></div> -->
+
+    <script>
+      const types = {
+        video: "youtube#video",
+        channel: "youtube#channel",
+      };
+      Object.freeze(types);
+      window.addEventListener("load", function () {
+        const btn = document.getElementById("search-btn");
+        btn.addEventListener("click", function () {
+          handleSearch();
+        });
+
+        const pagintion = document.getElementById("pagination");
+      });
+
+      async function handleSearch() {
+        const search = document.getElementById("search").value;
+        try {
+          const {
+            items: results,
+            pageInfo: { resultsPerPage, totalResults },
+          } = await getyoutubeSearchResults(search);
+          console.log(results, resultsPerPage, totalResults);
+          //   const allCards = [];
+          for (let video of results) {
+            console.log(video);
+            const card = createCard(video);
+            // if (card) {
+            //   allCards.push(card);
+            // }
+            console.log(card);
+            const resCont = document.getElementById("resCont");
+            // resCont.innerHTML = null;
+            resCont.append(card);
+          }
+        } catch {}
+      }
+
+      function getyoutubeSearchResults(q) {
+        const apiKey = "AIzaSyAHmca4Qu3UZC1-fR1hBGosiBM0a-8TH00";
+        return fetch(
+          `https://youtube.googleapis.com/youtube/v3/search?q=${q}&key=${apiKey}`
+        ).then((res) => res.json());
+      }
+
+      function createCard(data) {
+        const div = document.createElement("div");
+        // if (data.id.kind === types.channel) {
+        //   return false;
+        // }
+        div.innerHTML = `    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/${data.id.videoId}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>`;
+        return div;
+      }
+    </script>
+  </body>
+</html>

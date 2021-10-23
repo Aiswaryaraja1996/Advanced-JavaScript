@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./navbar.css" type="text/css" />
+    <link rel="stylesheet" href="./product.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#">Home</a>
+        <ul class="flex-center">
+          <div>
+            <a href="./form.html" target="_blank">Add Products</a>
+            <a href="./cart.html" target="_blank">View Cart</a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="content-wrap">
+      <div class="product-display">
+        <div class="prod-catalog">
+          <p>CHOOSE YOUR FAVOURITE WATCHES !!</p>
+          <div class="watches"></div>
+          <p>CHOOSE YOUR FAVOURITE SMART PHONES !!</p>
+          <div class="phones"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var productList = JSON.parse(localStorage.getItem("productData"));
+      function displayProducts() {
+        for (var j = 0; j < productList.length; j++) {
+          console.log(productList[j]);
+          var imgDiv = document.createElement("div");
+          imgDiv.setAttribute("class", "prodCard");
+
+          var card = document.createElement("div");
+          card.setAttribute("class", "card");
+          card.setAttribute("id", j);
+
+          var imgSrc = document.createElement("img");
+          imgSrc.setAttribute("src", productList[j].url);
+          imgSrc.setAttribute("class", "prodImg");
+
+          var prodDesc = document.createElement("div");
+          prodDesc.setAttribute("class", "prodDesc");
+
+          var addCart = document.createElement("button");
+          addCart.textContent = "Add to Cart";
+          addCart.className = "addCart";
+
+          var h2 = document.createElement("h3");
+          h2.textContent = productList[j].name;
+
+          var h3 = document.createElement("h4");
+          h3.textContent = `Rs.${productList[j].price}`;
+
+          prodDesc.appendChild(h2);
+          prodDesc.appendChild(h3);
+
+          card.appendChild(imgSrc);
+          card.appendChild(addCart);
+          card.appendChild(prodDesc);
+
+          imgDiv.appendChild(card);
+
+          if (productList[j].category === "Smart Phones") {
+            document.getElementsByClassName("phones")[0].appendChild(imgDiv);
+          } else {
+            document.getElementsByClassName("watches")[0].appendChild(imgDiv);
+          }
+        }
+      }
+
+      window.addEventListener("load", function () {
+        displayProducts();
+        var addCartBtns = document.getElementsByClassName("addCart");
+
+        for (const btn of addCartBtns) {
+          btn.addEventListener("click", function () {
+            var cartProd = JSON.parse(localStorage.getItem("cartData")) || [];
+            var index = event.target.parentNode.id;
+            for (var i = 0; i < cartProd.length; i++) {
+              if (cartProd[i].name === productList[index].name) {
+                alert("Product already exist in cart !!");
+                return;
+              }
+            }
+            cartProd.push(productList[index]);
+
+            localStorage.setItem("cartData", JSON.stringify(cartProd));
+            alert("Product added to cart successfully !!");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

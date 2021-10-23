@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.form-container {
+  width: 100%;
+  top: 160px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.inner-form-wrap {
+  background-color: #0086cb;
+}
+
+.input-form,
+.image-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form label,
+.image-form label {
+  padding-bottom: 10px;
+}
+
+.input-form input,
+.input-form select {
+  outline: none !important;
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-form input:focus {
+  border-color: #68cde7 !important;
+}
+.btn {
+  background-color: #68cde7;
+  color: white;
+  border-style: none;
+  border: none !important;
+  cursor: pointer;
+  font-size: 20px;
+}

@@ -1,0 +1,84 @@
+h2,
+h3,
+h4,
+p,
+h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.content-wrap {
+  top: 100px;
+  position: relative;
+  width: 100%;
+}
+
+.product-display {
+  width: 100%;
+  margin: auto;
+  background-color: #f7f9a7;
+  padding: 10px;
+}
+.prod-catalog {
+  display: flex;
+  flex-direction: column;
+}
+.watches,
+.phones {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  padding: 10px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 40px;
+  border: 2px solid white;
+}
+
+.prodCard {
+  max-width: 100%;
+  background-color: white;
+}
+
+.card {
+  width: auto;
+  max-width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.prodImg {
+  max-width: 75%;
+  padding-bottom: 10px;
+  height: 200px;
+}
+
+button {
+  border-style: none;
+  width: 80%;
+  padding: 10px;
+  outline: none;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid #81b622;
+  color: #282c3f;
+  letter-spacing: 0.3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.prodDesc {
+  margin-top: 10px;
+  width: 80%;
+  text-align: left;
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Types</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Nunito Sans", sans-serif;
+        overflow: hidden;
+      }
+      header {
+        width: 100%;
+        position: fixed;
+        background-color: #265b8b;
+        height: 80px;
+        color: white;
+        text-align: center;
+        z-index: 10;
+      }
+      h1 {
+        font-family: "Nunito Sans", sans-serif;
+        letter-spacing: 5px;
+      }
+      .container {
+        display: flex;
+      }
+
+      .content {
+        top: 80px;
+        position: absolute;
+        background-color: #1181c8;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      button {
+        background-color: #1181c8;
+        border-style: none;
+        outline: none;
+        text-align: left;
+        color: white;
+        padding: 10px;
+        font-size: 1rem;
+        border-bottom: 1px solid #84c7f2;
+        font-family: "Nunito Sans", sans-serif;
+        letter-spacing: 2px;
+      }
+      .category {
+        background-color: #84c7f2;
+      }
+      .type:hover {
+        cursor: pointer;
+        background-color: #bfd7edde;
+      }
+      .description {
+        top: 80px;
+        left: 284px;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        background-color: #ececeb;
+
+        padding: 20px;
+      }
+      li {
+        padding: 5px;
+      }
+
+      /* #ECECEB */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>DATA TYPES IN JAVASCRIPT</h1>
+    </header>
+    <div class="container">
+      <div class="content">
+        <button class="category" disabled="true">PRIMITIVE DATA TYPES</button>
+        <button class="type">Boolean</button>
+        <button class="type">Null</button>
+        <button class="type">Undefined</button>
+        <button class="type">Number</button>
+
+        <button class="type">String</button>
+
+        <button class="category" disabled="true">
+          NON PRIMITIVE DATA TYPES
+        </button>
+        <button class="type">Objects</button>
+        <button class="type">Arrays</button>
+        <button class="type">Functions</button>
+      </div>
+      <div class="description"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        var btns = document.getElementsByClassName("type");
+        for (const btn of btns) {
+          btn.addEventListener("click", function () {
+            var type = btn.textContent;
+            displayDetails(type);
+          });
+        }
+      });
+
+      function displayDetails(type) {
+        console.log(type);
+        var desc = document.getElementsByClassName("description")[0];
+        desc.innerHTML = null;
+
+        switch (type) {
+          case "Boolean":
+            var h2 = document.createElement("h2");
+            h2.textContent = "BOOLEAN";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent = "The boolean is a primitive data type.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "The boolean data type has only two values, true and false.";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "They are logical data types which can be used for comparison of two variables or to check a condition.";
+            ul.append(li1, li2, li3);
+            desc.append(h2, ul);
+            break;
+          case "Null":
+            var h2 = document.createElement("h2");
+            h2.textContent = "NULL";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "The null in JavaScript is a data type that is represented by only one value, the ‘null’ itself.";
+            var li2 = document.createElement("li");
+            li2.textContent = "A null value means no value or empty value.";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "The type of a null value is an object, not null.";
+            ul.append(li1, li2, li3);
+            desc.append(h2, ul);
+            break;
+          case "Undefined":
+            var h2 = document.createElement("h2");
+            h2.textContent = "UNDEFINED";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "Undefined is a primitive value automatically assigned to variables that have just been declared, or to formal arguments for which there are no actual arguments.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "The variable is declared but doesn’t contain any value.";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "This type is neither writable nor enumerable or configurable.";
+            ul.append(li1, li2, li3);
+            desc.append(h2, ul);
+            break;
+
+          case "Number":
+            var h2 = document.createElement("h2");
+            h2.textContent = "NUMBER";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "Number is a primitive data type, its not mutable and hence are passed by value.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "It represents integer and floating numbers (decimals and exponentials).";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "A number type can also be +Infinity, -Infinity, and NaN (not a number).";
+            ul.append(li1, li2, li3);
+            desc.append(h2, ul);
+            break;
+
+          case "String":
+            var h2 = document.createElement("h2");
+            h2.textContent = "STRING";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "String is a primitive data type,  its not mutable and hence are passed by value.";
+            var li2 = document.createElement("li");
+            li2.textContent = "It is used to store text.";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "In JavaScript, strings can be surrounded by single quotes,double quotes or backticks.";
+            ul.append(li1, li2, li3);
+            desc.append(h2, ul);
+            break;
+          case "Arrays":
+            var h2 = document.createElement("h2");
+            h2.textContent = "ARRAYS";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "An array is a special variable, which can hold more than one value at a time , is a non primitive type.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "They are mutable and are passed by reference(address).";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "Arrays are a special type of objects. The typeof operator in JavaScript returns object for arrays.";
+            var li4 = document.createElement("li");
+            li4.textContent =
+              "Arrays supports random access as elements are stored in contiguous memory locations. Each element can be accessed using their index number.";
+            ul.append(li1, li2, li3, li4);
+            desc.append(h2, ul);
+            break;
+          case "Objects":
+            var h2 = document.createElement("h2");
+            h2.textContent = "OBJECTS";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "Objects are non primitive data type which can hold data of different types.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "They are mutable and are passed by reference(address).";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "We can define (and create) a JavaScript object with an object literal.";
+            var li4 = document.createElement("li");
+            li4.textContent =
+              "JavaScript objects are containers for named values called properties.";
+            var li5 = document.createElement("li");
+            li5.textContent =
+              "Objects can also have methods.Methods are actions that can be performed on objects.Methods are stored in properties as function definitions.";
+            ul.append(li1, li2, li3, li4, li5);
+            desc.append(h2, ul);
+            break;
+          case "Functions":
+            var h2 = document.createElement("h2");
+            h2.textContent = "FUNCTIONS";
+
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            li1.textContent =
+              "A JavaScript function is a block of code designed to perform a particular task.";
+            var li2 = document.createElement("li");
+            li2.textContent =
+              "A JavaScript function is executed when its invoked or called.";
+            var li3 = document.createElement("li");
+            li3.textContent =
+              "A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().";
+            var li4 = document.createElement("li");
+            li4.textContent =
+              "Function parameters are listed inside the parentheses () in the function definition.Function arguments are the values received by the function when it is invoked.";
+            var li5 = document.createElement("li");
+            li5.textContent =
+              "Functions often compute a return value. The return value is returned back to the caller.When JavaScript reaches a return statement, the function will stop executing.";
+            ul.append(li1, li2, li3, li4, li5);
+            desc.append(h2, ul);
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
