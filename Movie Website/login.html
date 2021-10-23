@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="./movieNavbar.css" />
+    <link rel="stylesheet" type="text/css" href="./signup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="background-color: black">
+    <header>
+      <nav>
+        <ul class="flex-center">
+          <a href="./Home.html">Home</a>
+          <div id="login">
+            <a href="./login.html">Login</a>
+          </div>
+          <div id="signup">
+            <a href="./signUp.html" target="_blank">Signup</a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <form>
+      <div class="form-container">
+        <div class="inner-form-wrap">
+          <div class="input-form">
+            <label for="mail">Email address</label>
+            <input
+              id="mail"
+              maxlength="50"
+              required=""
+              class=""
+              placeholder="your@email.com"
+            />
+          </div>
+          <div class="input-form">
+            <label for="Passwd">Password</label>
+            <input
+              id="psswd"
+              name="passwd"
+              maxlength="50"
+              required=""
+              class=""
+              type="password"
+            />
+          </div>
+
+          <div class="input-form">
+            <input class="btn" id="submit" type="submit" value="Login" />
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      function handleLogin(e) {
+        e.preventDefault();
+        const user = JSON.parse(localStorage.getItem("userData"));
+        var loginMail = document.getElementById("mail").value;
+        var loginPsswd = document.getElementById("psswd").value;
+
+        for (key in user) {
+          var userDetail = user[key];
+
+          var mailVerify = userDetail.email === loginMail;
+          var psswdVerify = userDetail.password === loginPsswd;
+
+          console.log(userDetail, loginMail, loginPsswd);
+
+          if (mailVerify && psswdVerify) {
+            alert("Login Successful!!");
+            window.location.assign("./Home.html");
+            break;
+          }
+        }
+        if (!mailVerify && !psswdVerify) {
+          alert("Login Failed.Invalid Credentials!!");
+        }
+      }
+      window.addEventListener("load", function () {
+        var btn = document.getElementById("submit");
+        btn.addEventListener("click", handleLogin);
+      });
+    </script>
+  </body>
+</html>

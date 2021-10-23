@@ -9,7 +9,7 @@ var quoteWrap = document.querySelector(".quotes");
 window.addEventListener("scroll", () => {
   document.getElementById("scount").textContent = ++scrollCount;
   // * document.documentElement returns the root element
-  // *  scrollTop - scrollHeight = clientHeight
+  // * scrollTop - scrollHeight = clientHeight
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight - 10) {
     document.getElementById("fcount").textContent = ++funcCount;

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Products</title>
+    <link rel="stylesheet" href="./navbar.css" type="text/css" />
+    <link rel="stylesheet" href="./form.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#">Home</a>
+        <ul class="flex-center">
+          <div>
+            <a href="#">Add Products</a>
+            <a href="#" target="_blank">View Cart</a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <form>
+      <div class="form-container">
+        <div class="inner-form-wrap">
+          <div class="input-form">
+            <label for="pCat">Product Category</label>
+            <select id="pCat">
+              <option value="" selected disabled hidden>Choose Category</option>
+              <option value="Watches">Watches</option>
+              <option value="Smart Phones">Smart Phones</option>
+            </select>
+          </div>
+
+          <div class="input-form">
+            <label for="pName">Product Name</label>
+            <input id="pName" required="true" />
+          </div>
+          <div class="input-form">
+            <label for="price">Price</label>
+            <input id="price" required="true" type="text" />
+          </div>
+          <div class="image-form">
+            <label for="imgUrl">Image Upload</label>
+            <input id="imgUrl" required="true" type="file" accept="image/*" />
+          </div>
+
+          <div class="input-form">
+            <input class="btn" id="submit" type="submit" value="ADD PRODUCT" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <script>
+      function Product(category, name, price, url) {
+        this.category = category;
+        this.name = name;
+        this.price = price;
+        this.url = url;
+      }
+      function addProduct(url) {
+        var prodCat = document.getElementById("pCat").value;
+        var prodName = document.getElementById("pName").value;
+        var price = document.getElementById("price").value;
+        console.log(prodCat, prodName, price, url);
+        if (
+          prodCat !== null &&
+          prodName !== null &&
+          price !== null &&
+          url !== null
+        ) {
+          var productDetails =
+            JSON.parse(localStorage.getItem("productData")) || [];
+          var productObj = new Product(prodCat, prodName, price, url);
+          productDetails.push(productObj);
+          localStorage.setItem("productData", JSON.stringify(productDetails));
+          alert("Product Added Successfully");
+        }
+      }
+
+      window.addEventListener("load", function () {
+        var btn = document.getElementById("submit");
+        var url;
+        document
+          .getElementById("imgUrl")
+          .addEventListener("change", function () {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              btn.addEventListener("click", function () {
+                addProduct(reader.result);
+              });
+            };
+            reader.readAsDataURL(this.files.item(0));
+          });
+        // console.log(url);
+        // btn.addEventListener("click", function () {
+        //   addProduct(url);
+        // });
+      });
+    </script>
+  </body>
+</html>
