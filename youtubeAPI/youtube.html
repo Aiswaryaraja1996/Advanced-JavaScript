@@ -11,67 +11,31 @@
       href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body,
-      h2 {
+      p {
         margin: 0px;
         padding: 0px;
         overflow-x: hidden;
-      }
-      h2 {
         font-family: "Oswald", sans-serif;
       }
-      .title-icon {
-        height: 20px;
-        width: 150px;
-        max-width: 100%;
-      }
-      .flex-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .title-icon img {
-        max-width: 36%;
-        height: auto;
-        margin-right: 5px;
-      }
-      .title-container {
-        display: flex;
-        height: 56px;
 
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 14px 18px 16px;
-      }
-      #search-text {
-        border-radius: 2px 0 0 2px;
-        outline: none;
-        border-style: none;
-        height: 40px;
-        width: 380px;
-        border: 1px solid #ccc;
-      }
-      .search-bar {
-        margin: 0 0 0 40px;
-        padding: 0 4px;
-      }
-      #search-btn {
-        border: 1px solid #ccc;
-        height: 40px;
-        width: 64px;
-        border-radius: 0 2px 2px 0;
-        cursor: pointer;
-        background-color: #f8f8f8;
-        padding: 1px;
-        border-left: none;
-      }
-
-      button {
-        outline: none;
-        border-style: none;
-        background-color: transparent;
-      }
       .profile {
         height: 40px;
         width: 60px;
@@ -80,94 +44,432 @@
         max-width: 70%;
         border-radius: 50%;
       }
+      .yt-logo {
+        padding-left: 14px;
+      }
+      p {
+        margin-left: 3px;
+        font-family: "Oswald", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .container-fluid {
+        height: 56px;
+        padding: 0 16px;
+      }
+      .btn-outline {
+        border-color: #d3d3d3;
+        border-radius: 0 2px 2px 0;
+        height: 40px;
+        width: 64px;
+      }
+      .form-control {
+        border-radius: 2px 0 0 2px;
+      }
+      input[type="search"] {
+        padding: 2px 8px;
+        font-family: "Roboto", "Noto", sans-serif;
+      }
+      .badge {
+        font-family: "Roboto", "Noto", sans-serif !important;
+      }
+      input[type="search"]::placeholder {
+        padding-left: 5px;
+
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+      .voice {
+        height: 40px;
+        width: 40px;
+        border-radius: 100px;
+        margin-left: 4px;
+        background-color: #f9f9f9;
+      }
+      .page-layout {
+        top: 56px;
+        position: relative;
+      }
+      .sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+      }
+      .video-container {
+        width: 100%;
+        left: 250px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+      }
+      .sidebar p {
+        margin-top: 2px;
+        font-size: 15px;
+        font-family: "Roboto", "Noto", sans-serif !important;
+      }
+
+      .list:not(:first-child) {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 12px;
+        padding-top: 12px;
+      }
+      .videos {
+        width: 90%;
+        margin: auto;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+      .card {
+        width: 210px;
+        background-color: transparent !important;
+        border: none;
+      }
+      .card .img_div {
+        max-width: 100%;
+        width: 210px;
+        height: 118px;
+        height: 100%;
+      }
+      .img_div img {
+        max-width: 100%;
+        width: 210px;
+        height: 118px;
+        height: 100%;
+      }
+      .card-body {
+        line-height: 1.5em;
+        max-height: 4em;
+        overflow: hidden;
+      }
+      .card-title {
+        max-width: 100%;
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: 14px;
+      }
+      h5 {
+        font-family: "Roboto", "Arial", sans-serif;
+      }
     </style>
   </head>
   <body>
-    <header>
-      <div class="title-container">
-        <div class="title-icon flex-center">
-          <img src="./youtube.png" />
-          <h2>YouTube</h2>
-        </div>
-        <div class="search-bar flex-center">
-          <input id="search-text" type="text" placeholder="Search" />
-          <div id="search-btn" class="flex-center">
-            <button>
-              <img src="./loupe.png" />
-            </button>
+    <nav class="navbar bg-white fixed-top navbar-expand-lg p-0">
+      <div class="container-fluid">
+        <div class="start d-flex justify-content-center align-items-center">
+          <i class="bi bi-list px-2" style="font-size: 26px"></i>
+          <div>
+            <div
+              class="yt-logo d-flex justify-content-center align-items-center"
+            >
+              <i class="bi bi-youtube" style="font-size: 30px; color: red"></i>
+              <p>YouTube</p>
+            </div>
           </div>
         </div>
-        <div class="profile flex-center">
-          <img src="./avatar.jpg" />
+
+        <div class="middle">
+          <form class="d-flex">
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              style="width: 572px"
+              border-color="#d3d3d3"
+            />
+            <button class="btn btn-outline" id="search-btn" type="submit">
+              <img src="./loupe.png" />
+            </button>
+            <div class="voice d-flex justify-content-center align-items-center">
+              <i class="bi bi-mic-fill"></i>
+            </div>
+          </form>
+        </div>
+
+        <div class="end d-flex justify-content-center align-items-center me-2">
+          <div class="me-2 p-2">
+            <i class="bi bi-camera-reels" style="font-size: 20px"></i>
+          </div>
+
+          <div class="me-2 p-2">
+            <i class="bi bi-grid-3x3-gap ms-2" style="font-size: 20px"></i>
+          </div>
+
+          <div class="me-2 p-2">
+            <i
+              class="bi bi-bell ms-2 position-relative"
+              style="font-size: 20px"
+            >
+              <span
+                class="
+                  position-absolute
+                  top-0
+                  translate-middle
+                  badge
+                  rounded-pill
+                  bg-danger
+                "
+                style="font-size: 10px"
+              >
+                9+
+                <span class="visually-hidden">unread messages</span>
+              </span></i
+            >
+          </div>
+          <div class="me-2 p-2">
+            <img
+              src="./avatar.jpg"
+              style="width: 32px; height: 32px; border-radius: 50%"
+            />
+          </div>
         </div>
       </div>
-    </header>
-    <!-- <label for="search">Search</label>
-    <input type="text" name="search" id="search" />
-    <input type="submit" value="Search" id="search-btn" />
-    <div id="resCont"></div> -->
+    </nav>
+
+    <div class="page-layout d-flex">
+      <nav class="sidebar sticky-top d-flex flex-column">
+        <div class="list">
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-house-door"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Home</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-compass"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Explore</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-collection-play"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Subscriptions</p>
+          </div>
+        </div>
+        <div class="list">
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-journals"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Library</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-clock-history"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>History</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-play-btn"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Your videos</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-clock"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Watch later</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-hand-thumbs-up"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Liked videos</p>
+          </div>
+          <div
+            class="d-flex align-items-center"
+            style="min-height: 48px; padding: 0 24px"
+          >
+            <i
+              class="bi bi-film"
+              style="font-size: 22px; margin-right: 24px"
+            ></i>
+            <p>Movies</p>
+          </div>
+        </div>
+      </nav>
+
+      <div class="video-container mt-2">
+        <div
+          class="videos mt-20 d-flex align-items-center justify-content-between"
+          id="videos"
+        ></div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
+      const handleSearch = async () => {
+        try {
+          const search = document.getElementById("search").value;
+
+          var {
+            nextPageToken: token,
+            items: results,
+            pageInfo: { resultsPerPage, totalResults },
+          } = await getyoutubeSearchResults(search, nextPage);
+          nextPage = token;
+
+          console.log(results, resultsPerPage, token);
+
+          for (var i = 0; i < results.length; i++) {
+            var card = createCard(results[i]);
+
+            var resCont = document.getElementById("videos");
+
+            resCont.append(card);
+          }
+          handleImgClick();
+        } catch {}
+      };
+
+      const handleImgClick = async () => {
+        const imgV = document.getElementsByClassName("img-thumb");
+        for (const i of imgV) {
+          i.addEventListener("click", function () {
+            console.log("hit");
+            document.getElementById("videos").innerHTML = null;
+            console.log(
+              event.target.parentNode.parentNode.childNodes[1].firstElementChild
+                .innerText
+            );
+            var div_card = document.createElement("div");
+
+            div_card.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${event.target.name}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+
+            var div = document.createElement("div");
+
+            var h5 = document.createElement("h5");
+
+            h5.textContent =
+              event.target.parentNode.parentNode.childNodes[1].firstElementChild.innerText;
+
+            div.appendChild(h5);
+
+            div_card.append(div);
+            document.getElementById("videos").append(div_card);
+          });
+        }
+      };
+
+      const getyoutubeSearchResults = (q, t) => {
+        const apiKey = "AIzaSyA0BBSrq7UpGoiY4coHeOS8f60TFAg9kCs";
+        if (q) {
+          if (t) {
+            return fetch(
+              `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${q}&pageToken=${t}&maxResults=25&key=${apiKey}`
+            ).then((res) => res.json());
+          } else {
+            return fetch(
+              `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${q}&maxResults=25&key=${apiKey}`
+            ).then((res) => res.json());
+          }
+        } else {
+          if (t) {
+            return fetch(
+              `https://youtube.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&pageToken=${t}&regionCode=IN&maxResults=25&key=${apiKey}`
+            ).then((res) => res.json());
+          } else {
+            return fetch(
+              `https://youtube.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&regionCode=IN&maxResults=25&key=${apiKey}`
+            ).then((res) => res.json());
+          }
+        }
+      };
+
+      const createCard = (data) => {
+        var div_card = document.createElement("div");
+        div_card.className = "card";
+
+        var img_div = document.createElement("div");
+        img_div.className = "img_div";
+
+        var img = document.createElement("img");
+        img.src = data.snippet.thumbnails.medium.url;
+        img.name = data.id.videoId;
+        img.className = "img-thumb";
+        img_div.appendChild(img);
+        var div = document.createElement("div");
+        div.className = "card-body";
+
+        var h5 = document.createElement("h5");
+        h5.className = "card-title";
+        h5.textContent = data.snippet.title;
+
+        div.appendChild(h5);
+
+        div_card.append(img_div, div);
+
+        return div_card;
+      };
+
+      var nextPage = null;
       const types = {
         video: "youtube#video",
         channel: "youtube#channel",
       };
       Object.freeze(types);
-      window.addEventListener("load", function () {
-        const btn = document.getElementById("search-btn");
-        btn.addEventListener("click", function () {
-          handleSearch();
-        });
 
-        const pagintion = document.getElementById("pagination");
+      const btn = document.getElementById("search-btn");
+
+      handleSearch();
+      btn.addEventListener("click", () => {
+        document.getElementById("videos").innerHTML = null;
+        event.preventDefault();
+        handleSearch();
       });
 
-      async function handleSearch() {
-        const search = document.getElementById("search").value;
-        try {
-          const {
-            items: results,
-            pageInfo: { resultsPerPage, totalResults },
-          } = await getyoutubeSearchResults(search);
-          console.log(results, resultsPerPage, totalResults);
-          //   const allCards = [];
-          for (let video of results) {
-            console.log(video);
-            const card = createCard(video);
-            // if (card) {
-            //   allCards.push(card);
-            // }
-            console.log(card);
-            const resCont = document.getElementById("resCont");
-            // resCont.innerHTML = null;
-            resCont.append(card);
-          }
-        } catch {}
-      }
-
-      function getyoutubeSearchResults(q) {
-        const apiKey = "AIzaSyAHmca4Qu3UZC1-fR1hBGosiBM0a-8TH00";
-        return fetch(
-          `https://youtube.googleapis.com/youtube/v3/search?q=${q}&key=${apiKey}`
-        ).then((res) => res.json());
-      }
-
-      function createCard(data) {
-        const div = document.createElement("div");
-        // if (data.id.kind === types.channel) {
-        //   return false;
-        // }
-        div.innerHTML = `    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/${data.id.videoId}"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>`;
-        return div;
-      }
+      window.addEventListener("scroll", () => {
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
+          infinteScroll = 1;
+          handleSearch();
+        }
+      });
     </script>
   </body>
 </html>
