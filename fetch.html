@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "container"></div>
+
+    <script type="text/javascript">
+    fetch("https://reqres.in/api/users")
+    .then(function(res){
+        // console.log(res);
+        return res.json();
+    })
+    .then(function(res){
+        console.log(res);
+        createUser(res.data);
+    })
+    .catch(function(error){
+        // handle error
+    })
+
+    function createUser(data){
+        const cont = document.getElementById("container");
+        cont.innerHTML= "";
+        const div = document.createElement("div");
+        for(let d of data){
+            const card = createCard(d);
+            console.log(card);
+            div.append(card);
+        }
+        cont.append(div);
+    }
+
+    function createCard(user){
+        const div = document.createElement("div");
+        div.className = "card-container";
+
+        const img = document.createElement("img");
+        img.src = user.avatar;
+
+        const h3 = document.createElement("h3");
+        h3.textContent = user.first_name;
+
+        const h4 = document.createElement("h4");
+        h4.textContent = user.email;
+
+        div.append(img,h3,h4);
+
+        return div
+
+
+    }
+
+
+    
+    
+    </script>
+    
+</body>
+</html>

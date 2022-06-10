@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <style >
+
+        #container{
+            width: 100%;
+            display: flex;
+        }
+        .prod-img{
+            max-width: 100%;
+            height: 100px;
+        }
+
+        .card-container{
+            display: flex;
+            width: 30%;
+            border: 1px solid black;
+            /* margin: 10px; */
+        }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      let data = [];
+      function loadProducts() {
+        return fetch("https://fakestoreapi.com/products")
+          .then(function (response) {
+            return response.json();
+          })
+          .catch(function (error) {});
+      }
+
+      function createProducts(data) {
+        const cont = document.getElementById("container");
+        cont.innerHTML= "";
+        const div = document.createElement("div");
+        for(let d of data){
+            const card = createCard(d);
+            console.log(card);
+            div.append(card);
+        }
+        cont.append(div);
+      }
+
+      function createCard(data) {
+        const div = document.createElement("div");
+        div.className = "card-container";
+
+        const img = document.createElement("img");
+        img.src = data.image;
+        img.className = "prod-img";
+
+        const h3 = document.createElement("h3");
+        h3.textContent = data.title;
+
+        const h4 = document.createElement("h4");
+        h4.textContent = `Rs.${data.price}`;
+
+        div.append(img,h3,h4);
+
+        return div
+      }
+
+      loadProducts().then(function (res) {
+        console.log(res);
+        createProducts(res);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vaccine Register</title>
+  </head>
+  <body>
+    Name <input type="text" id="name" />
+    <input type="submit" value="Submit" id="submit" />
+    <div id="queue"></div>
+
+    <script>
+      window.addEventListener("load", function () {
+        const btn = document.getElementById("submit");
+        btn.addEventListener("click", register);
+      });
+
+      const qList = ["Aiswarya", "Nimisha", "Antony", "Abhirami"];
+
+      function register() {
+        let msg = `Please wait for your turn. There are ${qList.length} people before you.`;
+        const name = document.getElementById("name").value;
+        qList.push(name);
+        display(qList);
+        alert(msg);
+
+        checkQueue(name)
+          .then(function (msg) {
+            alert(msg);
+          })
+          .catch(function (err) {
+            alert(err);
+          });
+      }
+
+      function checkQueue(name) {
+        return new Promise(function (res, rej) {
+          const id = setInterval(function () {
+            if (qList[0] === name) {
+              resolve(`${name} its your turn.`);
+              clearInterval(id);
+            }
+          }, 1000);
+        });
+      }
+
+      function vaccine() {
+        qList.shift();
+        if (qList.length === 0) {
+          clearInterval(id);
+        }
+        display(qList);
+      }
+
+      function display(qList) {
+        const qCont = document.getElementById("queue");
+        qCont.innerHTML = "";
+        const ul = document.createElement("ul");
+        qList.forEach(function (name) {
+          const el = document.createElement("li");
+          el.textContent = name;
+          ul.append(el);
+        });
+        qCont.append(ul);
+      }
+
+      display(qList);
+      const id = setInterval(vaccine, 2000);
+    </script>
+  </body>
+</html>

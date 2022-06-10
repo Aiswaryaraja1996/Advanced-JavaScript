@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+
+    <h1 id="num">0</h1>
+    <button id="btn">Click Me</button>
+
+    <script>
+        const ele = document.getElementById("num");
+        const btn = document.getElementById("btn");
+
+        window.addEventListener("load",function(){
+
+            var storedNum = localStorage.getItem("localNum");
+            var displayNum = Number(storedNum);
+            if(Number.isNaN(displayNum)){
+                displayNum = 0;
+                localStorage.setItem("localNum",0);
+            }
+            ele.textContent = displayNum;
+            btn.addEventListener("click",function(){
+                var n = Number(ele.textContent);
+                if(Number.isNaN(displayNum)){
+                    alert("Not a Number");
+                    return;
+                }
+                n++;
+                ele.textContent = n;
+                localStorage.setItem("localNum",n);
+            })
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

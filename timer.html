@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIMER</title>
+  </head>
+  <body>
+    <h1 id="timer">0</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <button id="reset">RESET</button>
+
+    <script>
+      let time = 0;
+      let timerId = null;
+
+      function startTimer() {
+        if (timerId !== null) {
+          return;
+        }
+        timerId = setInterval(function () {
+          time++;
+          handleTimer(time);
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(timerId);
+        timerId = null;
+      }
+
+      function resetTimer() {
+        stopTimer();
+        time = 0;
+        handleTimer(0);
+      }
+
+      function handleTimer(time) {
+        document.getElementById("timer").textContent = time;
+      }
+
+      window.addEventListener("load", function () {
+        document.getElementById("start").addEventListener("click", startTimer);
+        document.getElementById("stop").addEventListener("click", stopTimer);
+        document.getElementById("reset").addEventListener("click", resetTimer);
+      });
+    </script>
+  </body>
+</html>

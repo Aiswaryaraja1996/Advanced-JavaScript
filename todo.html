@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+  </head>
+  <body>
+    <h1>TODO LIST</h1>
+    <input id="todo" type="text" />
+    <input id="btn-add" type="button" value="Add" />
+
+    <br />
+    <input id="btn-rem" type="button" value="Clear Data" />
+
+    <div id="task-list"></div>
+
+    <script>
+      let todo = [];
+
+      function handleAdd() {
+        var text = document.getElementById("todo").value;
+        if (!text) {
+          alert("Text Not Entered...");
+          return;
+        }
+
+        const textObj = {
+          task: text,
+          status: false,
+        };
+
+        todo.push(textObj);
+        //stringify is used to transform to JSON format
+        localStorage.setItem("todos", JSON.stringify(todo));
+
+        const wrapper = document.getElementById("task-list");
+        taskDisplay(todo, wrapper);
+      }
+
+      function taskDisplay(todo, wrapper) {
+        var ul = document.createElement("ul");
+        wrapper.innerHTML = "";
+        for (var i = 0; i < todo.length; i++) {
+          var li = document.createElement("li");
+          li.textContent = todo[i].task;
+          ul.append(li);
+        }
+
+        wrapper.append(ul);
+      }
+
+      function getDataFromStorage() {
+          //Parse is to get the content from local storage
+        const data = JSON.parse(localStorage.getItem("todos"));
+        var wrap = document.getElementById("task-list");
+        if (data) {
+          todo = data;
+          taskDisplay(todo, wrap);
+        }
+      }
+
+      function handleRem() {
+        todo = [];
+        localStorage.setItem("todos", JSON.stringify(todo));
+        document.getElementById("task-list").innerHTML = "";
+      }
+
+
+
+      window.addEventListener("load", function () {
+        const add = document.getElementById("btn-add");
+        add.addEventListener("click", handleAdd);
+
+        const rem = document.getElementById("btn-rem");
+        rem.addEventListener("click", handleRem);
+
+        getDataFromStorage();
+      });
+    </script>
+  </body>
+</html>
